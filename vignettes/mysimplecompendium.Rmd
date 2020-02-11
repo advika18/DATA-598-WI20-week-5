@@ -1,10 +1,12 @@
 ---
-title: "name-of-my-vignette-file"
-output: rmarkdown::html_vignette
-
+title: "mysimplecompendium"
+output:
+    bookdown::html_document2:
+      base_format: rmarkdown::html_vignette
+      number_sections: false
 bibliography: example.bib
 vignette: >
-  %\VignetteIndexEntry{name-of-my-vignette-file}
+  %\VignetteIndexEntry{mysimplecompendium}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,13 +14,24 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  fig.width = 5,
+  fig.retina = 2,
+  comment = "#>",
+  devtools::load_all(".")
 )
 ```
-```{r}
+
+```{r setup}
+library(mysimplecompendium)
+```
+
+
+```{r starwars-gender-plot, fig.cap="Gender of Starwars characters"}
 library(tidyverse)
+library(here)
 ```
 ```{r starwarsplot, fig.cap="A ggplot of starwars stuff"}
+library(tidyverse)
 starwars %>%
   filter(species=="Human") %>%
   ggplot() +
@@ -28,10 +41,17 @@ starwars %>%
 
 We can see Figure \@ref(fig:starwarsplot)...
 
-```{r setup}
-library(mysimplecompendium)
+
+And R script files:
+
+```{r}
+source(here("vignettes/myscript.R"))
+plus_two(c(2,3))
 ```
 
 Here is an article "Terminologies for reproducible research". [@clarkson2017human].
 
 ## References cited
+
+
+
