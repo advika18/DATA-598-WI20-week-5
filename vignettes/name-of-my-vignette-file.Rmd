@@ -1,0 +1,37 @@
+---
+title: "name-of-my-vignette-file"
+output: rmarkdown::html_vignette
+
+bibliography: example.bib
+vignette: >
+  %\VignetteIndexEntry{name-of-my-vignette-file}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+```{r}
+library(tidyverse)
+```
+```{r starwarsplot, fig.cap="A ggplot of starwars stuff"}
+starwars %>%
+  filter(species=="Human") %>%
+  ggplot() +
+  aes(x=height,y=mass)+
+  geom_point()
+```
+
+We can see Figure \@ref(fig:starwarsplot)...
+
+```{r setup}
+library(mysimplecompendium)
+```
+
+Here is an article "Terminologies for reproducible research". [@clarkson2017human].
+
+## References cited
